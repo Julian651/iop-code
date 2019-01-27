@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 public class GUI extends JFrame implements ActionListener {
-        String title ="Incorporating Computer Science with <html><i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'>by: Julian Herrera & Jonathan Riess</br>";
+        String title ="Incorporating Computer Science with <i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'>by: Julian Herrera & Jonathan Riess</br>";
         String info = "In dedication to our English teacher, Mrs. McElhiney, for helping us understand complex texts, such as <i>The Sound and the Fury</i>, and guiding us on how to write a quick poetry analysis. In dedication to Mr. Greene for teaching us everything we know about programming. <br><br>The purpose of this program is to give users the ability of quick access to useful information from the book, such as the various characters, the summaries and quotes of each section, and the analyses of the varying themes.</br></br>";
         JMenu[] menus = {new JMenu("Characters"), new JMenu("Summaries"), new JMenu("Analyzations"), new JMenu("Useful Quotes"), new JMenu("About")};
         JMenuItem[] items1 = {new JMenuItem("Jason Compson III (Mr. Compson)"), new JMenuItem("Caroline Bascomb Compson (Mrs. Compson)"), new JMenuItem("Quentin Compson")
