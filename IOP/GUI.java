@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 public class GUI extends JFrame implements ActionListener {
-        String title ="<html><i>D</i>efault";
-        String info = "infodefault";
-        JMenu[] menus = {new JMenu("Characters"), new JMenu("Summaries"), new JMenu("Analyzations"), new JMenu("Useful Quotes")};
+        String title ="Incorporating Computer Science with <html><i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'>by: Julian Herrera & Jonathan Riess</br>";
+        String info = "In dedication to our English teacher, Mrs. McElhiney, for helping us understand complex texts, such as <i>The Sound and the Fury</i>, and guiding us on how to write a quick poetry analysis. In dedication to Mr. Greene for teaching us everything we know about programming. <br><br>The purpose of this program is to give users the ability of quick access to useful information from the book, such as the various characters, the summaries and quotes of each section, and the analyses of the varying themes.</br></br>";
+        JMenu[] menus = {new JMenu("Characters"), new JMenu("Summaries"), new JMenu("Analyzations"), new JMenu("Useful Quotes"), new JMenu("About")};
         JMenuItem[] items1 = {new JMenuItem("Jason Compson III (Mr. Compson)"), new JMenuItem("Caroline Bascomb Compson (Mrs. Compson)"), new JMenuItem("Quentin Compson")
         , new JMenuItem("Caddy Compson (Candace)"), new JMenuItem("Jason Compson IV"), new JMenuItem("Benjy Compson (Maury)"), new JMenuItem("Miss Quentin"), new JMenuItem("Dilsey")
         , new JMenuItem("Roskus"), new JMenuItem("T.P."), new JMenuItem("Versh"), new JMenuItem("Frony"), new JMenuItem("Luster"), new JMenuItem("Damuddy"), new JMenuItem("Uncle Maury Bascomb")
@@ -18,18 +18,19 @@ public class GUI extends JFrame implements ActionListener {
         , new JMenuItem("Decay of the Compson Family (Decay of the Southern Aristocracy)"), new JMenuItem("Faulkner’s style")};
         JMenuItem[] items4 = {new JMenuItem("Benjy's Section"), new JMenuItem("Quentin's Section"), new JMenuItem("Jason's Section"), new JMenuItem("Dilsey's Section")
         , new JMenuItem("Passage Analysis Jason’s Section")};
+        JMenuItem[] items5 = {new JMenuItem("Dedication and Information")};
         JLabel label1 = new JLabel(title,JLabel.CENTER);
         JLabel label2 = new JLabel(info, JLabel.LEADING);
     public void GUI() {
         label1.setText("<html>"+ title + "</html>");
         label2.setText("<html> &nbsp;"+ info + "</html>");
         label1.setVerticalAlignment(JLabel.TOP);
-		label1.setFont(new Font("TimesRoman", Font.BOLD, 24));
+	label1.setFont(new Font("TimesRoman", Font.BOLD, 24));
         label2.setFont(new Font("TimesRoman", Font.PLAIN, 20));
         JFrame fr = new JFrame();
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //JPanel p = new JPanel(new GridLayout(5,3));
-		fr.add(label1, BorderLayout.NORTH);
+	fr.add(label1, BorderLayout.NORTH);
         fr.add(label2, BorderLayout.CENTER);
         fr.setSize(800,600);
         fr.setJMenuBar(Menu());
@@ -54,6 +55,10 @@ public class GUI extends JFrame implements ActionListener {
             menus[3].add(items4[i]); 
             items4[i].addActionListener(this);
         }
+        for (int i=0; i<items5.length; i++) {
+            menus[4].add(items5[i]); 
+            items5[i].addActionListener(this);
+        }
         for (int i=0; i<menus.length; i++) {
             menuBar.add(menus[i]);
         }
@@ -61,11 +66,11 @@ public class GUI extends JFrame implements ActionListener {
     }
 	public void setLables(String title, String info)
 	{
-		  label1.setText("<html>"+ title + "</html>");
+	  label1.setText("<html>"+ title + "</html>");
           label2.setText("<html> &nbsp;"+ info + "</html>");
 	}
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource() == items1[0]) {
+        if (e.getSource() == items1[0]) {
             title = "Character: Jason Compson III (Mr. Compson)";
             info = "yes";
         }
@@ -245,7 +250,11 @@ public class GUI extends JFrame implements ActionListener {
             title = "Quotes: Passage Analysis Jason's Section";
             info = "yes";
         }
-		setLables(title, info);
+        if (e.getSource() == items5[0]) {
+            title ="Incorporating Computer Science with <i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'>by: Julian Herrera & Jonathan Riess</br>";
+            info = "In dedication to our English teacher, Mrs. McElhiney, for helping us understand complex texts, such as <i>The Sound and the Fury</i>, and guiding us on how to write a quick poetry analysis. In dedication to Mr. Greene for teaching us everything we know about programming. <br><br>The purpose of this program is to give users the ability of quick access to useful information from the book, such as the various characters, the summaries and quotes of each section, and the analyses of the varying themes.</br></br>";
+        }
+	setLables(title, info);
         revalidate();
     }
     /*public JLabel getLabel1() {
