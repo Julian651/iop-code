@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 public class GUI extends JFrame implements ActionListener {
-        String title ="Incorporating Computer Science with <i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'>by: Julian Herrera & Jonathan Riess</br>";
+        String title ="Incorporating Computer Science with <i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'><center>by: Julian Herrera & Jonathan Riess</center></br>";
         String info = "In dedication to our English teacher, Mrs. McElhiney, for helping us understand complex texts, such as <i>The Sound and the Fury</i>, and guiding us on how to write a quick poetry analysis. <br><br>In dedication to Mr. Greene for teaching us everything we know about programming.</br></br> <br><br>The purpose of this program is to give users the ability for quick access to useful information from the <i>The Sound and the Fury</i>, such as the various characters, the summaries and quotes of each section, and the analyses of the varying themes.</br></br>";
         JMenu[] menus = {new JMenu("Characters"), new JMenu("Summaries"), new JMenu("Symbols"), new JMenu("Analyzations"), new JMenu("Useful Quotes"), new JMenu("About")};
         JMenuItem[] items1 = {new JMenuItem("Jason Compson III (Mr. Compson)"), new JMenuItem("Caroline Bascomb Compson (Mrs. Compson)"), new JMenuItem("Quentin Compson")
@@ -19,27 +19,45 @@ public class GUI extends JFrame implements ActionListener {
         , new JMenuItem("Decay of the Compson Family (Decay of the Southern Aristocracy)"), new JMenuItem("Faulkner’s style"), new JMenuItem("Religious Allusions")};
         JMenuItem[] items5 = {new JMenuItem("Benjy's Section"), new JMenuItem("Quentin's Section"), new JMenuItem("Jason's Section"), new JMenuItem("Dilsey's Section")};
         JMenuItem[] items6 = {new JMenuItem("Dedication and Information")};
-        JLabel label1 = new JLabel(title,JLabel.CENTER);
-        JLabel label2 = new JLabel(info, JLabel.LEADING);
+        JLabel labelTitle = new JLabel(title,JLabel.CENTER);
+        JEditorPane jpane = new JEditorPane();
     public void GUI() {
-        label1.setText("<html>"+ title + "</html>");
-        label2.setText("<html> <p style='margin-left: 10px'>"+ info + "</p></html>");
-        label1.setVerticalAlignment(JLabel.TOP);
-	label1.setFont(new Font("TimesRoman", Font.BOLD, 24));
-        label2.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        label2.setPreferredSize(new Dimension(100,100));
-        //JScrollPane js = new JScrollPane(label2, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        JFrame fr = new JFrame();
-        fr.setLayout(new BorderLayout());
-	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//fr.add(scroller);
-        //JPanel p = new JPanel(new GridLayout(5,3));
-	fr.getContentPane().add(label1, BorderLayout.NORTH);
-        fr.getContentPane().add(label2, BorderLayout.CENTER);
+        labelTitle.setText("<html>"+ title + "</html>");
+        labelTitle.setVerticalAlignment(JLabel.TOP);
+        labelTitle.setFont(new Font("TimesRoman", Font.BOLD, 24));
+        
+        // set JEditor Pane 
+        jpane.setEditable(false); //readonly
+        jpane.setContentType("text/html");
+        jpane.setBackground(new Color(239, 241, 244)); // gray background
+        
+        // set vertical scroll on jpane
+        JScrollPane jsp = new JScrollPane(jpane);
+        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        jpane.setText("<html > <p style='margin-left: 10px;font-size:15px;'>"+ info + "</p></html>");   
+        
+        // remove border for scrollpane (black line)
+        jsp.setBorder(BorderFactory.createEmptyBorder());
+        
+        // set scrollpane to top
+        jpane.setCaretPosition(0);
+        
+        // create frame
+        JFrame fr = new JFrame("IOP Project");
+        
+        // set frame information
+        fr.setLayout(new BorderLayout(0,5));  
+        fr.add(labelTitle, BorderLayout.NORTH);
+        fr.add(jsp, BorderLayout.CENTER);
         fr.setSize(1280,720);
         fr.setJMenuBar(Menu());
-        fr.setLocationRelativeTo(null);
-        //fr.add(p);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Center screen
+        fr.setLocationRelativeTo(null); 
+        
+        // Show Frame
+        fr.setVisible(true);
         fr.show();
     }
     public JMenuBar Menu() {
@@ -75,8 +93,8 @@ public class GUI extends JFrame implements ActionListener {
     }
 	public void setLables(String title, String info)
 	{
-	  label1.setText("<html>"+ title + "</html>");
-          label2.setText("<html> <p style='margin-left: 10px'>"+ info + "</p></html>");
+	  labelTitle.setText("<html>"+ title + "</html>");
+          jpane.setText("<html> <p style='margin-left: 10px;font-size:15px;'>"+ info + "</p></html>");
 	}
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == items1[0]) {
@@ -253,7 +271,7 @@ public class GUI extends JFrame implements ActionListener {
         }
         if (e.getSource() == items4[1]) {
             title = "Analysis: Title";
-            info = "The title, <i>The Sound and the Fury</i>, is a direct allusion to a verse written by William Shakespeare in the play Macbeth:<br><br></br></br><blockquote>Life’s but a walking shadow; a poor player,<br>That struts and frets his hour upon the stage,</br><br>And then is heard no more; it is a taleTold by an idiot, full of sound and fury,</br><br>Signifying nothing (V, v, 23-26).</br></blockquote><br></br><p style='margin-left: 10px'>The beginning two lines of the allusion summarize the plot of the story. The \"poor player that struts and frets his hour upon the stage\" is symbolically the entire Compson family which sees its demise in the book. The \"poor player\" can also be interpreted as any given character, for example: Mr. Compson, who lives underneath the shadow of his nihilistic philosophy and ends up living his last hour with a bottle in his hand. Rarely is he, moreover anyone who dies, ever mentioned after his or her death as described by the following line, \"And then is heard no more.\" The allusion also mentions \"a tale told by an idiot.\" The idiot can be interpreted as any narrator of a chapter telling his tale. For example, Benjy is often referred to and treated as an idiot both because he is disabled and because he has no concept of time. Quentin is an idiot because he focuses too much on small, insignificant details which ends up being the cause for his suicide. Jason is an idiot because he still has the <q>Old South</q> mentality of racism, sexsim, anti semitism, or any other kind of discrimination against a \"normal\" white male. Dilsey, rather than being an idiot herself, represents and idiot because she is seen and treated as one in her former and current society. The phrase \"full of sound and fury\" represent: Quentin, as in sound mind, Benjy, as he perceives the world through his senses, and Jason, his anger and fury. In addition, each character’s tale signifies nothing as all the events lead to the decline of the Compson family which will be forgotten. This directly corresponds to or agrees with Mr. Compson’s philosophy that life is meaningless.</p>";
+            info = "The title, <i>The Sound and the Fury</i>, is a direct allusion to a verse written by William Shakespeare in the play Macbeth:<br><br></br></br><blockquote><p style='margin-left: 10px;font-size:15px;'>Life’s but a walking shadow; a poor player,<br>That struts and frets his hour upon the stage,</br><br>And then is heard no more; it is a taleTold by an idiot, full of sound and fury,</br><br>Signifying nothing (V, v, 23-26).</br></blockquote><br></br></p><p style='margin-left: 10px;font-size:15px;'>The beginning two lines of the allusion summarize the plot of the story. The \"poor player that struts and frets his hour upon the stage\" is symbolically the entire Compson family which sees its demise in the book. The \"poor player\" can also be interpreted as any given character, for example: Mr. Compson, who lives underneath the shadow of his nihilistic philosophy and ends up living his last hour with a bottle in his hand. Rarely is he, moreover anyone who dies, ever mentioned after his or her death as described by the following line, \"And then is heard no more.\" The allusion also mentions \"a tale told by an idiot.\" The idiot can be interpreted as any narrator of a chapter telling his tale. For example, Benjy is often referred to and treated as an idiot both because he is disabled and because he has no concept of time. Quentin is an idiot because he focuses too much on small, insignificant details which ends up being the cause for his suicide. Jason is an idiot because he still has the <q>Old South</q> mentality of racism, sexsim, anti semitism, or any other kind of discrimination against a \"normal\" white male. Dilsey, rather than being an idiot herself, represents and idiot because she is seen and treated as one in her former and current society. The phrase \"full of sound and fury\" represent: Quentin, as in sound mind, Benjy, as he perceives the world through his senses, and Jason, his anger and fury. In addition, each character’s tale signifies nothing as all the events lead to the decline of the Compson family which will be forgotten. This directly corresponds to or agrees with Mr. Compson’s philosophy that life is meaningless.</p>";
         }
         if (e.getSource() == items4[2]) {
             title = "Analysis: Suicide";
@@ -292,35 +310,12 @@ public class GUI extends JFrame implements ActionListener {
             info = "Quote 1: “‘Nothing,’ Jason said. ‘Not anything. I wouldn’t lay my hand on her. The bitch that cost me a job, the one chance I ever had to get ahead, that killed my father and is shortening my mother’s life every day made my name a laughing stock I town’” (Faulkner 304).<br>Quote 2: “‘Well,’ I says. ‘You can’t, can you? You never have tried to do anything with her,’ I says. ‘How do you expect to begin this late, when she’s seventeen years old?’” (Faulkner 180).</br>";
         }
         if (e.getSource() == items6[0]) {
-            title ="Incorporating Computer Science with <i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'>by: Julian Herrera & Jonathan Riess</br>";
+            title ="Incorporating Computer Science with <i>The Sound and the Fury</i><br><font size='2' face='TimesRoman' colr='black'><center>by: Julian Herrera & Jonathan Riess</center></br>";
             info = "In dedication to our English teacher, Mrs. McElhiney, for helping us understand complex texts, such as <i>The Sound and the Fury</i>, and guiding us on how to write a quick poetry analysis. <br><br>In dedication to Mr. Greene for teaching us everything we know about programming.</br></br> <br><br>The purpose of this program is to give users the ability for quick access to useful information from the <i>The Sound and the Fury</i>, such as the various characters, the summaries and quotes of each section, and the analyses of the varying themes.</br></br>";
         }
 	setLables(title, info);
         revalidate();
+        // set scrollpane to top
+        jpane.setCaretPosition(0);
     }
-    /*public JLabel getLabel1() {
-        return label1;
-    }
-    /*public String getTitle() {
-        return title;
-    }
-    public String getInfo() {
-        return info;
-    }
-    /*public void paint(Graphics g) {
-        FontMetrics fm = g.getFontMetrics();
-        Font f;
-        Rectangle rect = getBounds();
-        int strW = fm.stringWidth(title);
-        int width = (rect.width/2) - (strW/2);
-        int length = rect.height/16;
-        int iwidth = 10;
-        int ilength = rect.height/6;
-        f = new Font("Arial", Font.BOLD,16);
-        g.setFont(f);
-        g.drawString(title,width,length);
-        f = new Font("TimesRoman", Font.PLAIN,12);
-        g.setFont(f);
-        g.drawString(info,iwidth,ilength);
-    }*/
-}
+ }
