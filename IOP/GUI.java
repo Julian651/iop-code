@@ -23,15 +23,17 @@ public class GUI extends JFrame implements ActionListener {
         JLabel label2 = new JLabel(info, JLabel.LEADING);
     public void GUI() {
         label1.setText("<html>"+ title + "</html>");
-        label2.setText("<html> &nbsp;"+ info + "</html>");
+        label2.setText("<html>"+ info + "</html>");
         label1.setVerticalAlignment(JLabel.TOP);
 	label1.setFont(new Font("TimesRoman", Font.BOLD, 24));
         label2.setFont(new Font("TimesRoman", Font.PLAIN, 20));
         JFrame fr = new JFrame();
+        fr.setLayout(new BorderLayout());
 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//fr.add(scroller);
         //JPanel p = new JPanel(new GridLayout(5,3));
-	fr.add(label1, BorderLayout.NORTH);
-        fr.add(label2, BorderLayout.CENTER);
+	fr.getContentPane().add(label1, BorderLayout.NORTH);
+        fr.getContentPane().add(label2, BorderLayout.CENTER);
         fr.setSize(800,600);
         fr.setJMenuBar(Menu());
         //fr.add(p);
