@@ -263,7 +263,7 @@ public class GUI extends JFrame implements ActionListener {
         }
         if (e.getSource() == items3[6]) {
             title = "Symbols: Flowers/Trees";
-            info = "During Caddy’s wedding, Quentin hates the flower bouquet that she has as it symbolizes adulthood and the loss of her virginity as seen in the following quote, “Roses. NOt virgins, like dogweed or milkweed… Roses” (77). In addition, Benjy is intrigued by flowers, especially by the cornflower blue as seen during the first scene of the book, when Benjy gets snatched on a nail, and the last, the wild carriage ride. These flowers symbolize his innocence as seen on page 274, “His eyes were the clear, of the pale, sweet blue of cornflowers” (274). The honeysuckle is another symbolic flower which represents the loss of Caddy’s purity as Quentin describes that the “honeysuckle was the saddest odor of them all, I think” (169).";
+            info = "During Caddy’s wedding, Quentin hates the flower bouquet that she has as it symbolizes adulthood and the loss of her virginity as seen in the following quote, “Roses. Not virgins, like dogweed or milkweed… Roses” (77). In addition, Benjy is intrigued by flowers, especially by the cornflower blue as seen during the first scene of the book, when Benjy gets snatched on a nail, and the last, the wild carriage ride. These flowers symbolize his innocence as seen on page 274, “His eyes were the clear, of the pale, sweet blue of cornflowers” (274). The honeysuckle is another symbolic flower which represents the loss of Caddy’s purity as Quentin describes that the “honeysuckle was the saddest odor of them all, I think” (169).";
         }
         if (e.getSource() == items4[0]) {
             title = "Analysis: Time";
